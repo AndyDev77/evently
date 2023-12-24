@@ -14,28 +14,26 @@ const Header = () => {
             src="/assets/images/logo.svg"
             width={128}
             height={38}
-            alt="evently logo"
+            alt="Evently logo"
           />
         </Link>
 
         <SignedIn>
-            <nav className="md:flex-between hidden w-full max-w-xs">
-                <NavItems />
-            </nav>
+          <nav className="md:flex-between hidden w-full max-w-xs">
+            <NavItems />
+          </nav>
         </SignedIn>
 
         <div className="flex w-32 justify-end gap-3">
-            <SignedIn>
-                <UserButton afterSignOutUrl="/" />
-                <MobileNav />
-            </SignedIn>
-            <SignedOut>
-                <Button asChild className="rounded-full" size="lg">
-                    <Link href="/sign-in">
-                        Se Connecter
-                    </Link>
-                </Button>
-            </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+            <MobileNav />
+          </SignedIn>
+          <SignedOut>
+            <Button asChild className="rounded-full" size="lg">
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
         </div>
       </div>
     </header>

@@ -1,4 +1,3 @@
-import React, { startTransition, useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -7,6 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ICategory } from "@/lib/database/models/category.model";
+import { startTransition, useEffect, useState } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,7 +19,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Input } from "../ui/input";
-import { createCategory, getAllCategories } from "@/lib/actions/category.actions";
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.actions";
 
 type DropdownProps = {
   value?: string;
@@ -40,9 +43,9 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const categoriesList = await getAllCategories();
+      const categoryList = await getAllCategories();
 
-      categoriesList && setCategories(categoriesList as ICategory[]);
+      categoryList && setCategories(categoryList as ICategory[]);
     };
 
     getCategories();
@@ -66,7 +69,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
           ))}
 
         <AlertDialog>
-          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-priamry-500 hover:bg-primary-50 focus:text-primary-500">
+          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
             Add new category
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white">
@@ -75,7 +78,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
               <AlertDialogDescription>
                 <Input
                   type="text"
-                  placeholder="Category-name"
+                  placeholder="Category name"
                   className="input-field mt-3"
                   onChange={(e) => setNewCategory(e.target.value)}
                 />
